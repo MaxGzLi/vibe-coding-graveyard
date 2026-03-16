@@ -1,0 +1,64 @@
+name: "🪦 为你的项目申请安葬 / Submit a Project"
+description: "让你的 vibe coding 项目安息于此 / Inter your dead vibe coding project"
+title: "[Tombstone] "
+labels: ["new-tombstone"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: "项目名 / Project Name"
+      placeholder: "e.g., Fit2Eat"
+    validations:
+      required: true
+  - type: input
+    id: purpose
+    attributes:
+      label: "用途 / Purpose"
+      description: "一句话描述 / One sentence"
+      placeholder: "e.g., AI 健身饮食规划应用"
+    validations:
+      required: true
+  - type: input
+    id: tokens
+    attributes:
+      label: "消耗 Token / Tokens Consumed"
+      placeholder: "e.g., 50000 or 不敢算"
+    validations:
+      required: true
+  - type: input
+    id: tool
+    attributes:
+      label: "工具 / AI Tool Used"
+      placeholder: "e.g., Claude 3.5, GPT-4, Cursor"
+    validations:
+      required: true
+  - type: input
+    id: cause
+    attributes:
+      label: "死因 / Cause of Death"
+      placeholder: "e.g., 护城河为零"
+    validations:
+      required: true
+  - type: input
+    id: country
+    attributes:
+      label: "国家 / Country"
+      description: "ISO 3166-1 alpha-2 code"
+      placeholder: "e.g., CN, US, JP"
+    validations:
+      required: true
+  - type: textarea
+    id: lastWords
+    attributes:
+      label: "遗言 / Last Words (optional)"
+      placeholder: "e.g., 论文引用一定能打动用户的"
+  - type: input
+    id: born
+    attributes:
+      label: "出生日期 / Born (optional)"
+      placeholder: "e.g., 2025.12"
+  - type: input
+    id: died
+    attributes:
+      label: "死亡日期 / Died (optional)"
+      placeholder: "e.g., 2026.03"
