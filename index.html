@@ -8,17 +8,14 @@
   <!-- Open Graph -->
   <meta property="og:title" content="Vibe Coding 公墓 — R.I.P. My Projects">
   <meta property="og:description" content="给死掉的 vibe coding 项目立碑。每一个项目都值得被记住。">
-  <meta property="og:image" content="https://maxgzli.github.io/vibe-coding-graveyard/assets/og-card.png">
-  <meta property="og:url" content="https://maxgzli.github.io/vibe-coding-graveyard/">
+  <meta property="og:image" content="https://vibecodegraveyard.com/assets/og-card.png">
+  <meta property="og:url" content="https://vibecodegraveyard.com">
   <meta property="og:type" content="website">
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Vibe Coding 公墓 — R.I.P. My Projects">
   <meta name="twitter:description" content="A memorial for dead vibe coding projects. Every project deserves a headstone.">
-  <meta name="twitter:image" content="https://maxgzli.github.io/vibe-coding-graveyard/assets/og-card.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+SC:wght@400;600;700&family=Open+Sans:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="twitter:image" content="https://vibecodegraveyard.com/assets/og-card.png">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -38,7 +35,7 @@
   <header class="site-header">
     <div class="header-inner">
       <div class="header-left">
-        <a href="#" class="header-title" data-i18n="site-name">VIBE CODING<br>阵亡将士纪念委员会</a>
+        <a href="#/" class="header-title" data-i18n="site-name">VIBE CODING<br>阵亡将士纪念委员会</a>
       </div>
       <div class="header-center">
         <div class="header-seal">
@@ -78,11 +75,11 @@
   <!-- Primary Nav -->
   <nav class="primary-nav">
     <ul>
-      <li><a href="#" data-i18n="nav-registry">安息名录</a></li>
-      <li><a href="#" data-i18n="nav-cemeteries">浏览墓区</a></li>
-      <li><a href="#" data-i18n="nav-about">关于本馆</a></li>
-      <li><a href="#" data-i18n="nav-research">数据与研究</a></li>
-      <li><a href="#" data-i18n="nav-news">新闻与动态</a></li>
+      <li><a href="#/" data-i18n="nav-registry">安息名录</a></li>
+      <li><a href="#/cemeteries" data-i18n="nav-cemeteries">浏览墓区</a></li>
+      <li><a href="#/about" data-i18n="nav-about">关于本馆</a></li>
+      <li><a href="#/research" data-i18n="nav-research">数据与研究</a></li>
+      <li><a href="#/news" data-i18n="nav-news">新闻与动态</a></li>
       <li><a href="#" data-submit-link data-i18n="nav-apply">申请安葬</a></li>
     </ul>
     <div class="nav-arrow">
@@ -91,9 +88,7 @@
   </nav>
 
   <!-- ====== PAGE: LIST (Homepage) ====== -->
-  <div id="page-list" style="display:none">
-
-    <!-- Hero -->
+  <div id="page-list" data-page style="display:none">
     <section class="hero">
       <div class="hero-img" style="background-image:url('assets/cemetery.jpg')"></div>
       <div class="hero-overlay"></div>
@@ -102,23 +97,14 @@
         <p data-i18n="hero-subtitle">Rest in peace. Every vibe-coded project deserves a headstone.</p>
       </div>
     </section>
-
-    <!-- Content -->
     <div class="content-wrap">
-      <main class="content-main" id="list-main">
-        <!-- Obituary entries rendered by JS -->
-      </main>
-      <aside class="content-side" id="list-side">
-        <!-- Sidebar rendered by JS -->
-      </aside>
+      <main class="content-main" id="list-main"></main>
+      <aside class="content-side" id="list-side"></aside>
     </div>
-
   </div>
 
   <!-- ====== PAGE: PROFILE (Detail) ====== -->
-  <div id="page-profile" style="display:none">
-
-    <!-- Profile Hero -->
+  <div id="page-profile" data-page style="display:none">
     <section class="profile-hero">
       <div class="hero-watermark">
         <div class="hero-watermark-inner">
@@ -133,9 +119,9 @@
       </div>
       <div class="profile-hero-inner">
         <div class="hero-breadcrumb-row" id="profile-breadcrumb">
-          <a href="#" data-i18n="breadcrumb-home">首页</a>
+          <a href="#/" data-i18n="breadcrumb-home">首页</a>
           <span class="breadcrumb-sep">/</span>
-          <a href="#" data-i18n="breadcrumb-registry">安息名录</a>
+          <a href="#/" data-i18n="breadcrumb-registry">安息名录</a>
           <span class="breadcrumb-sep">/</span>
           <span class="breadcrumb-current" id="breadcrumb-name"></span>
         </div>
@@ -148,13 +134,23 @@
         <h1 class="hero-name" id="profile-hero-name"></h1>
       </div>
     </section>
-
-    <!-- Profile Content -->
-    <div class="profile-content" id="profile-body">
-      <!-- Profile content rendered by JS -->
-    </div>
-
+    <div class="profile-content" id="profile-body"></div>
   </div>
+
+  <!-- ====== PAGE: CEMETERIES (Browse all zones) ====== -->
+  <div id="page-cemeteries" data-page style="display:none"></div>
+
+  <!-- ====== PAGE: CEMETERY (Single zone walkway) ====== -->
+  <div id="page-cemetery" data-page style="display:none"></div>
+
+  <!-- ====== PAGE: ABOUT ====== -->
+  <div id="page-about" data-page style="display:none"></div>
+
+  <!-- ====== PAGE: RESEARCH ====== -->
+  <div id="page-research" data-page style="display:none"></div>
+
+  <!-- ====== PAGE: NEWS ====== -->
+  <div id="page-news" data-page style="display:none"></div>
 
   <!-- Footer -->
   <footer class="site-footer">
@@ -175,8 +171,8 @@
         </div>
       </div>
       <div class="footer-links">
-        <a href="#" data-i18n="footer-about">关于本馆</a>
-        <a href="#" data-i18n="footer-contact">联系我们</a>
+        <a href="#/about" data-i18n="footer-about">关于本馆</a>
+        <a href="#/about" data-i18n="footer-contact">联系我们</a>
         <a href="#" data-submit-link data-i18n="footer-apply">申请安葬</a>
         <a href="#" data-i18n="footer-privacy">隐私政策</a>
         <a href="#" data-i18n="footer-accessibility">无障碍声明</a>

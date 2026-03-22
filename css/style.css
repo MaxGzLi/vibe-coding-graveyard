@@ -3,6 +3,64 @@
    Styles — faithful to ABMC.gov mockup v4
    ============================================= */
 
+/* Self-hosted fonts (subsetted CJK) */
+@font-face {
+  font-family: 'Spectral';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/spectral-400i.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Spectral';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/spectral-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Spectral';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/spectral-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Spectral';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts/spectral-600.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Spectral';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/spectral-700.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Noto Serif SC';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('../fonts/notoserif-sc-subset.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('../fonts/opensans-variable.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Noto Sans SC';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('../fonts/notosans-sc-subset.woff2') format('woff2');
+}
+
 /* CSS Variables */
 :root {
   --navy: #00205C;
@@ -953,6 +1011,526 @@ img {
 
 
 /* =============================================
+   Cemeteries Grid (Browse all zones)
+   ============================================= */
+
+.cem-hero {
+  background: var(--navy);
+  color: var(--white);
+  padding: 40px 0 48px;
+}
+
+.cem-hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.cem-hero h1 {
+  font-family: var(--heading-font);
+  font-size: 42px;
+  font-weight: 600;
+  margin-top: 12px;
+}
+
+.cem-hero-sub {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.65);
+  margin-top: 8px;
+}
+
+.cem-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.cem-card {
+  display: block;
+  background: #1a1a2e;
+  border-radius: 8px;
+  padding: 32px 24px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid #2a2a3e;
+}
+
+.cem-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.cem-card-cross {
+  font-size: 36px;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.cem-card-name {
+  font-family: var(--heading-font);
+  font-size: 20px;
+  font-weight: 600;
+  color: #d4d4d4;
+  margin-bottom: 6px;
+}
+
+.cem-card-sub {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.cem-card-count {
+  font-size: 12px;
+  color: #555;
+  letter-spacing: 0.05em;
+}
+
+
+/* =============================================
+   Cemetery Walkway (Single zone)
+   ============================================= */
+
+.cemetery-dark {
+  background: #1a1a2e;
+  min-height: 60vh;
+  padding: 40px 0 60px;
+}
+
+.walk-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.walk-header {
+  text-align: center;
+  margin: 32px 0 40px;
+}
+
+.walk-section-label {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #8b8b8b;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.walk-title {
+  font-family: var(--heading-font);
+  font-size: 28px;
+  font-weight: 600;
+  color: #d4d4d4;
+}
+
+.walk-subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-top: 6px;
+}
+
+.walk-count {
+  font-size: 12px;
+  color: #555;
+  margin-top: 12px;
+  letter-spacing: 0.05em;
+}
+
+.walk-divider {
+  width: 60px;
+  height: 1px;
+  background: #444;
+  margin: 20px auto 0;
+}
+
+/* Walkway rows */
+.walk-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.walk-side {
+  flex: 1;
+  padding: 16px 0;
+}
+
+.walk-left {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 24px;
+}
+
+.walk-right {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 24px;
+}
+
+.walk-path {
+  width: 40px;
+  flex-shrink: 0;
+  align-self: stretch;
+  background: linear-gradient(180deg, #2a2a3e 0%, #1e1e30 100%);
+  border-left: 1px dashed #333;
+  border-right: 1px dashed #333;
+}
+
+.walk-cross {
+  display: block;
+  text-align: center;
+  padding: 12px 16px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.walk-cross:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.cross-symbol {
+  font-size: 32px;
+  color: #777;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.walk-cross:hover .cross-symbol {
+  color: #aaa;
+}
+
+.cross-name {
+  font-family: var(--heading-font);
+  font-size: 14px;
+  font-weight: 600;
+  color: #bbb;
+  margin-bottom: 2px;
+}
+
+.cross-dates {
+  font-size: 11px;
+  color: #555;
+}
+
+.cross-cause {
+  font-size: 11px;
+  color: var(--cause);
+  margin-top: 4px;
+  opacity: 0.8;
+}
+
+.walk-footer {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid #2a2a3e;
+}
+
+.walk-urn {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.walk-back {
+  font-size: 14px;
+  color: #888;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.walk-back:hover {
+  color: #bbb;
+}
+
+
+/* =============================================
+   FAQ Items (About page)
+   ============================================= */
+
+.faq-item {
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-item h3 {
+  font-family: var(--heading-font);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.faq-item p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+
+/* =============================================
+   Research — Stat Cards
+   ============================================= */
+
+.stat-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.stat-card {
+  background: #f5f7fa;
+  border-top: 3px solid var(--navy);
+  padding: 24px 16px;
+  text-align: center;
+}
+
+.stat-num {
+  font-family: var(--heading-font);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: var(--meta);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+
+/* =============================================
+   Research — Bar Charts
+   ============================================= */
+
+.bar-chart {
+  margin: 24px 0;
+}
+
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.bar-label {
+  width: 220px;
+  flex-shrink: 0;
+  font-size: 13px;
+  color: var(--text);
+  text-align: right;
+}
+
+.bar-track {
+  flex: 1;
+  height: 24px;
+  background: #f0f0f0;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: var(--navy);
+  border-radius: 2px;
+  transition: width 0.5s ease;
+}
+
+.bar-value {
+  width: 32px;
+  flex-shrink: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+
+/* =============================================
+   Research — Country List
+   ============================================= */
+
+.country-list {
+  margin: 24px 0;
+}
+
+.country-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.country-flag {
+  font-size: 20px;
+}
+
+.country-name {
+  flex: 1;
+  font-size: 15px;
+  color: var(--text);
+}
+
+.country-count {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+
+/* =============================================
+   News — Announcement & Timeline
+   ============================================= */
+
+.news-announce {
+  background: #fef3cd;
+  border-left: 4px solid #d4a017;
+  padding: 20px 24px;
+  margin-bottom: 32px;
+}
+
+.news-announce-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #856404;
+  margin-bottom: 8px;
+}
+
+.news-announce p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #664d03;
+  margin-bottom: 0;
+}
+
+.news-timeline {
+  position: relative;
+  padding-left: 32px;
+}
+
+.news-timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--border);
+}
+
+.news-date {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-top: 24px;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.news-date:first-child {
+  margin-top: 0;
+}
+
+.news-item {
+  position: relative;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.news-dot {
+  position: absolute;
+  left: -28px;
+  top: 18px;
+  width: 10px;
+  height: 10px;
+  background: var(--navy);
+  border-radius: 50%;
+  border: 2px solid var(--white);
+}
+
+.news-body h3 {
+  font-family: var(--heading-font);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+
+.news-body h3 a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.news-body h3 a:hover {
+  opacity: 0.8;
+}
+
+.news-body p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.news-meta {
+  font-size: 12px;
+  color: var(--meta);
+}
+
+
+/* =============================================
+   Page Heading (shared)
+   ============================================= */
+
+.page-heading {
+  margin-bottom: 8px;
+}
+
+.page-heading-sub {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--meta);
+  margin-bottom: 4px;
+}
+
+.page-heading h2 {
+  font-family: var(--heading-font);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.page-heading-rule {
+  width: 100%;
+  height: 2px;
+  background: var(--navy);
+  margin-bottom: 8px;
+}
+
+.results-info {
+  font-size: 13px;
+  color: var(--meta);
+  margin-bottom: 24px;
+}
+
+
+/* =============================================
    Responsive
    ============================================= */
 
@@ -1054,6 +1632,28 @@ img {
 
   .footer-bottom {
     text-align: center;
+  }
+
+  /* New pages responsive */
+  .stat-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bar-label {
+    width: 140px;
+    font-size: 12px;
+  }
+
+  .cem-hero h1 {
+    font-size: 28px;
+  }
+
+  .walk-title {
+    font-size: 22px;
+  }
+
+  .cem-grid {
+    grid-template-columns: 1fr;
   }
 }
 

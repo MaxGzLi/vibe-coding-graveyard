@@ -1,22 +1,7 @@
 import { t, field, countryFlag } from './i18n.js';
+import { calcDays } from './data.js';
 
 const ISSUE_URL = 'https://github.com/MaxGzLi/vibe-coding-graveyard/issues/new?template=new-tombstone.yml';
-
-function calcDays(born, died) {
-  if (!born || !died) return null;
-  // Formats: "YYYY.MM" or "YYYY.MM.DD"
-  const parts = (s) => {
-    const p = s.split('.');
-    const y = parseInt(p[0], 10);
-    const m = parseInt(p[1], 10) - 1; // 0-indexed month
-    const d = p.length >= 3 ? parseInt(p[2], 10) : 1;
-    return new Date(y, m, d);
-  };
-  const d1 = parts(born);
-  const d2 = parts(died);
-  const diff = Math.round((d2 - d1) / (1000 * 60 * 60 * 24));
-  return diff >= 0 ? diff : 0;
-}
 
 export function renderProfile(project, lang) {
   const heroName = document.getElementById('profile-hero-name');
@@ -30,7 +15,7 @@ export function renderProfile(project, lang) {
       body.innerHTML = `
         <div class="narrative" style="text-align:center;padding:4rem 1rem;">
           <h2>${t('not-found')}</h2>
-          <p><a href="#">${t('back-home')}</a></p>
+          <p><a href="#/">${t('back-home')}</a></p>
         </div>
       `;
     }
