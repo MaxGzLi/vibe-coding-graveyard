@@ -39,6 +39,22 @@ body:
       placeholder: "e.g., 护城河为零"
     validations:
       required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: "墓区 / Cemetery Zone"
+      description: "选择你的项目最适合安葬的墓区 / Pick the zone where your project belongs"
+      options:
+        - "API 套壳区 / API Wrapper Zone"
+        - "效率幻觉区 / Productivity Illusion Zone"
+        - "内容批发区 / Content Factory Zone"
+        - "社交替代区 / Social Replacement Zone"
+        - "发财梦碎区 / Shattered Fortune Zone"
+        - "开发者自嗨区 / Dev Self-Amusement Zone"
+        - "万年 Todo 区 / Eternal Todo Zone"
+        - "生活方式区 / Lifestyle Zone"
+    validations:
+      required: true
   - type: input
     id: country
     attributes:

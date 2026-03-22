@@ -65,6 +65,33 @@ const UI_STRINGS = {
     'cta-btn': '为你的项目申请安葬 →',
     'not-found': '该项目不存在',
     'back-home': '← 返回首页',
+
+    // Cemeteries
+    'cem-title': '浏览墓区',
+    'cem-subtitle': '每个墓区承载着一类梦想的终结。选择一个区域，走进去看看。',
+    'cem-interred': '个项目安息于此',
+    'cem-back': '← 返回墓区总览',
+    'cem-empty': '此墓区尚无安葬者。但别担心，总会有的。',
+
+    // Research
+    'research-title': '数据与研究',
+    'research-avg-days': '天平均存活（估算）',
+    'research-cause-title': '死因分布',
+    'research-cause-desc': '每个项目都有自己独特的死法，但总有一些死因特别受欢迎。',
+    'research-cat-title': '墓区分布',
+    'research-cat-desc': '哪个墓区最拥挤？这或许能告诉我们，开发者最喜欢在哪个领域重复犯错。',
+    'research-country-title': '国家与地区分布',
+    'research-tool-title': '工具分布',
+    'research-tool-desc': '哪个 AI 工具"协助"了最多项目走向死亡？（工具无辜，使用者有罪。）',
+    'research-lifespan-title': '存活天数排行',
+    'research-lifespan-desc': '从出生到死亡，按寿命从短到长排列。日期精度为月份时按 1 日估算。',
+
+    // News
+    'news-title': '新闻与动态',
+    'news-announce-label': '委员会公告',
+    'news-announce-text': '鉴于近期 vibe coding 项目阵亡率持续攀升，本委员会决定扩建墓区并增设临终关怀热线。请各位创造者理性 vibe，量力而行。对于存活时间不足 24 小时的项目，我们新增了"速葬通道"服务。',
+    'news-timeline-title': '最近讣告',
+    'news-separator': '。',
   },
   en: {
     // Banner & header
@@ -132,6 +159,33 @@ const UI_STRINGS = {
     'cta-btn': 'Apply for Burial →',
     'not-found': 'Project not found',
     'back-home': '← Back to Home',
+
+    // Cemeteries
+    'cem-title': 'Browse Cemeteries',
+    'cem-subtitle': 'Each zone marks the end of a certain kind of dream. Pick one and walk through.',
+    'cem-interred': 'projects interred',
+    'cem-back': '← Back to Cemeteries',
+    'cem-empty': 'No projects interred here yet. But don\'t worry, there will be.',
+
+    // Research
+    'research-title': 'Research & Data',
+    'research-avg-days': 'days avg. lifespan (est.)',
+    'research-cause-title': 'Cause of Death Distribution',
+    'research-cause-desc': 'Every project dies in its own unique way, but some causes are perennial favorites.',
+    'research-cat-title': 'Cemetery Zone Distribution',
+    'research-cat-desc': 'Which zone is most crowded? This might tell us where developers love to repeat their mistakes.',
+    'research-country-title': 'Country & Region Distribution',
+    'research-tool-title': 'Tool Distribution',
+    'research-tool-desc': 'Which AI tool "assisted" the most projects to their death? (The tool is innocent; the user is guilty.)',
+    'research-lifespan-title': 'Lifespan Rankings',
+    'research-lifespan-desc': 'From birth to death, sorted shortest to longest. Month-only dates estimated as the 1st.',
+
+    // News
+    'news-title': 'News & Updates',
+    'news-announce-label': 'Commission Announcement',
+    'news-announce-text': 'Given the continued rise in vibe coding project mortality rates, the Commission has decided to expand cemetery grounds and establish an end-of-life care hotline. Creators are advised to vibe responsibly. For projects that survive less than 24 hours, we now offer an "Express Burial" service.',
+    'news-timeline-title': 'Recent Obituaries',
+    'news-separator': '. ',
   }
 };
 

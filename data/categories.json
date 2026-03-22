@@ -1,0 +1,58 @@
+[
+  {
+    "id": "api-wrapper",
+    "name": "API 套壳区",
+    "name_en": "API Wrapper Zone",
+    "subtitle": "套了个壳就说是创业",
+    "subtitle_en": "Slapped a UI on an API and called it a startup"
+  },
+  {
+    "id": "productivity",
+    "name": "效率幻觉区",
+    "name_en": "Productivity Illusion Zone",
+    "subtitle": "省下的时间用来修 bug",
+    "subtitle_en": "Time saved was spent debugging"
+  },
+  {
+    "id": "content-gen",
+    "name": "内容批发区",
+    "name_en": "Content Factory Zone",
+    "subtitle": "量大从优，质量随缘",
+    "subtitle_en": "Volume over quality, always"
+  },
+  {
+    "id": "social",
+    "name": "社交替代区",
+    "name_en": "Social Replacement Zone",
+    "subtitle": "用 API 调用替代人际关系",
+    "subtitle_en": "Replacing human connection with API calls"
+  },
+  {
+    "id": "finance",
+    "name": "发财梦碎区",
+    "name_en": "Shattered Fortune Zone",
+    "subtitle": "All in 到归零",
+    "subtitle_en": "All in to zero"
+  },
+  {
+    "id": "dev-tools",
+    "name": "开发者自嗨区",
+    "name_en": "Dev Self-Amusement Zone",
+    "subtitle": "解决了一个不存在的问题",
+    "subtitle_en": "Solved a problem nobody had"
+  },
+  {
+    "id": "todo",
+    "name": "万年 Todo 区",
+    "name_en": "Eternal Todo Zone",
+    "subtitle": "第 10,000 个 Todo 应用",
+    "subtitle_en": "The 10,000th todo app"
+  },
+  {
+    "id": "lifestyle",
+    "name": "生活方式区",
+    "name_en": "Lifestyle Zone",
+    "subtitle": "AI 比你更懂你的生活",
+    "subtitle_en": "AI knows your life better than you"
+  }
+]
