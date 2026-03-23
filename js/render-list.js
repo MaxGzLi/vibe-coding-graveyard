@@ -1,7 +1,7 @@
 import { getStats, getTopCauses } from './data.js';
 import { t, field, countryFlag } from './i18n.js';
 
-const ISSUE_URL = 'https://github.com/MaxGzLi/vibe-coding-graveyard/issues/new?template=new-tombstone.yml';
+const SUBMIT_URL = '#/submit';
 
 const TOMBSTONE_SVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
   <path d="M12 2C8 2 6 4 6 4v16h12V4s-2-2-6-2z"/>
@@ -71,7 +71,7 @@ function renderSide(data, lang) {
       ${causesHtml}
     </div>
     <div class="side-section">
-      <a class="side-apply" href="${ISSUE_URL}">${t('apply-btn')}</a>
+      <a class="side-apply" href="${SUBMIT_URL}">${t('apply-btn')}</a>
     </div>
   `;
 }

@@ -1,0 +1,138 @@
+name: Process Tombstone Submission
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  process:
+    if: github.event.label.name == 'new-tombstone'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Add processing label
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              labels: ['processing']
+            });
+
+      - name: Process tombstone
+        id: process
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node .github/scripts/process-tombstone.mjs
+
+      - name: Commit and push (auto-approved)
+        if: steps.process.outputs.action == 'publish'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/tombstones.json
+          git commit -m "feat: add tombstone for ${{ steps.process.outputs.project_name }}
+
+          Closes #${{ github.event.issue.number }}
+
+          Co-Authored-By: Vibe Coding Memorial Bot <noreply@vibecoding.memorial>"
+          git push
+
+      - name: Comment and close (published)
+        if: steps.process.outputs.action == 'publish'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const slug = '${{ steps.process.outputs.slug }}';
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `🪦 **Your project has been laid to rest.**\n\nView the memorial: [${slug}](#/project/${slug})\n\nMay it rest in peace.`
+            });
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              state: 'closed',
+              labels: ['published']
+            });
+
+      - name: Comment (needs review)
+        if: steps.process.outputs.action == 'review'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const reason = process.env.REVIEW_REASON || 'Flagged for manual review';
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `⚠️ **This submission needs manual review.**\n\n${reason}\n\nA maintainer will review this shortly.`
+            });
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              labels: ['needs-review']
+            });
+        env:
+          REVIEW_REASON: ${{ steps.process.outputs.review_reason }}
+
+      - name: Comment and close (rejected)
+        if: steps.process.outputs.action == 'reject'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const reason = process.env.REJECT_REASON || 'Submission rejected';
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `❌ **Submission rejected.**\n\n${reason}`
+            });
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              state: 'closed',
+              labels: ['rejected']
+            });
+        env:
+          REJECT_REASON: ${{ steps.process.outputs.reject_reason }}
+
+      - name: Remove processing label
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            try {
+              await github.rest.issues.removeLabel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                name: 'processing'
+              });
+            } catch (e) {
+              // Label may not exist, ignore
+            }

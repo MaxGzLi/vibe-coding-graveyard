@@ -6,9 +6,8 @@ import { renderCemetery } from './render-cemetery.js';
 import { renderAbout } from './render-about.js';
 import { renderResearch } from './render-research.js';
 import { renderNews } from './render-news.js';
+import { renderSubmit } from './render-submit.js';
 import { getLang, setLang, updateStaticI18n } from './i18n.js';
-
-const ISSUE_URL = 'https://github.com/MaxGzLi/vibe-coding-graveyard/issues/new?template=new-tombstone.yml';
 
 function hideAllPages() {
   document.querySelectorAll('[data-page]').forEach(el => {
@@ -75,6 +74,13 @@ async function route() {
     return;
   }
 
+  if (hash === '#/submit') {
+    showPage('page-submit');
+    renderSubmit(lang);
+    window.scrollTo(0, 0);
+    return;
+  }
+
   // Default: homepage / registry
   showPage('page-list');
   renderList(data, lang);
@@ -106,7 +112,7 @@ window.addEventListener('DOMContentLoaded', () => {
   initLangToggle();
   initBannerClose();
   document.querySelectorAll('[data-submit-link]').forEach(el => {
-    el.href = ISSUE_URL;
+    el.href = '#/submit';
   });
   route();
 });
