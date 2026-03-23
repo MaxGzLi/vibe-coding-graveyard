@@ -1,7 +1,7 @@
 import { t, field, countryFlag } from './i18n.js';
 import { calcDays } from './data.js';
 
-const ISSUE_URL = 'https://github.com/MaxGzLi/vibe-coding-graveyard/issues/new?template=new-tombstone.yml';
+const SUBMIT_URL = '#/submit';
 
 export function renderProfile(project, lang) {
   const heroName = document.getElementById('profile-hero-name');
@@ -98,7 +98,7 @@ export function renderProfile(project, lang) {
   html += `
     <div class="bottom-cta">
       <p>${t('cta-text')}</p>
-      <a href="${ISSUE_URL}" class="cta-btn">${t('cta-btn')}</a>
+      <a href="${SUBMIT_URL}" class="cta-btn">${t('cta-btn')}</a>
     </div>
   `;
 
